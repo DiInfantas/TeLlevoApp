@@ -1,13 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>passrec</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">passrec</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <header style="padding:5%;">
+    <ion-button [routerLink]="['/home']" color="dark">Volver</ion-button>
+  </header>
+  
+  <div id="container">
+    <div class="container" style="padding: 5%;">
+      <ion-title>Recuperacion de contraseña</ion-title>
+      <br>
+      <p>Ingrese sus datos</p>
+      <br>
+    </div>
+
+
+    
+    <div style="padding: 10%;">
+      <ion-input label="Usuario" labelPlacement="stacked" [counter]="true" ></ion-input>  
+      <ion-input label="Nueva contraseña" type="Password" labelPlacement="stacked" ></ion-input>
+    </div>
+    <ion-button style="margin-bottom: 5%;" [routerLink]="['/home']" color="dark">Recuperar</ion-button>
+    <br>
+    <a [routerLink]="['/login']">Recordé mi contraseña</a>
+  </div>
+
 </ion-content>

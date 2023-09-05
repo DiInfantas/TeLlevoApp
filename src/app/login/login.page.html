@@ -1,16 +1,25 @@
-
 <ion-content [fullscreen]="true">
+  <header style="padding:5%;">
+    <ion-button [routerLink]="['/home']" color="dark">Volver</ion-button>
+  </header>
+  
   <div id="container">
     <div class="container" style="padding: 5%;">
-      <ion-title>Inicio</ion-title>
+      <ion-title>¡Bienvenido a TeLLevoApp!</ion-title>
       <br>
-      <p>Seleccione su tipo de perfil</p>
+      <p>Ingrese sus datos</p>
       <br>
     </div>
-    
 
-    <ion-button color="light">Conductor</ion-button> 
-    <ion-button color="light">Pasajero</ion-button>
+
+    
+    <div style="padding: 10%;">
+      <ion-input label="Usuario" labelPlacement="stacked" [counter]="true" ></ion-input>  
+      <ion-input label="Password" type="Password" labelPlacement="stacked" ></ion-input>
+    </div>
+    <ion-button style="margin-bottom: 5%;" [routerLink]="['/home']" color="dark">Ingresar</ion-button>
+    <br>
+    <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
   </div>
 
 </ion-content>
