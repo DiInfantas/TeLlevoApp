@@ -19,17 +19,8 @@ const routes: Routes = [
     path: 'passrec',
     loadChildren: () => import('./passrec/passrec.module').then( m => m.PassrecPageModule)
   },
-  {
-    path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
-  },  {
-    path: 'users',
-    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
-  },
-  {
-    path: 'users',
-    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
-  },
+ 
+
 
 ];
 
