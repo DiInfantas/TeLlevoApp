@@ -22,13 +22,12 @@
     
     <div style="padding: 10%;">
       <mat-form-field>
-        <mat-label>Ingresa tu correo</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-label>Ingrese su nombre de usuario</mat-label>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field> 
       <ion-input label="Password" type="Password" labelPlacement="stacked" ></ion-input>
     </div>
-    <ion-button style="margin-bottom: 5%;" [routerLink]="['/home']" color="dark">Ingresar</ion-button>
+    <ion-button style="margin-bottom: 5%;" [routerLink]="['/users']" color="dark">Ingresar</ion-button>
     <br>
     <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
 
