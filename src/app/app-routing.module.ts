@@ -19,15 +19,16 @@ const routes: Routes = [
   {
     path: 'passrec',
     loadChildren: () => import('./passrec/passrec.module').then( m => m.PassrecPageModule)
-  },  {
+  },
+
+  {
     path: 'p404',
     loadChildren: () => import('./p404/p404.module').then( m => m.P404PageModule)
   },
-
- 
-
-
+  
 ];
+
+
 
 @NgModule({
   imports: [
