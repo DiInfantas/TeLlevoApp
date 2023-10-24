@@ -3,9 +3,6 @@
   <section>
     
     <div class="example-flex-container"></div>
-      <button [routerLink]="['/home']" mat-icon-button color="primary" arial-label="Sos">
-        <mat-icon>home</mat-icon>   
-      </button>
   </section>    
     <ion-button [routerLink]="['/home']" color="dark">Volver</ion-button>
   </header>
@@ -17,17 +14,20 @@
       <p>Ingrese sus datos</p>
       <br>
     </div>
-
-
     
     <div style="padding: 10%;">
-      <mat-form-field>
-        <mat-label>Ingrese su nombre de usuario</mat-label>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field> 
-      <ion-input label="Password" type="Password" labelPlacement="stacked" ></ion-input>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Usuario" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput placeholder="******">
+      </mat-form-field>
+
     </div>
-    <ion-button style="margin-bottom: 5%;" [routerLink]="['/users']" color="dark">Ingresar</ion-button>
+    <ion-button [routerLink]="['/home']" style="margin-bottom: 5%;"  color="dark">Ingresar</ion-button>
     <br>
     <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
 
