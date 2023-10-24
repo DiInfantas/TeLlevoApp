@@ -25,11 +25,11 @@ const routes: Routes = [
     path: 'p404',
     loadChildren: () => import('./p404/p404.module').then( m => m.P404PageModule)
   },
-  
+  {
+    path: 'inicio',
+    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+  },
 ];
-
- 
-
 
 @NgModule({
   imports: [
@@ -38,3 +38,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
