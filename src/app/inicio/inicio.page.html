@@ -1,13 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>inicio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">inicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <header style="padding:5%;">
+  <section>
+    
+    <div class="example-flex-container"></div>
+  </section>    
+    <ion-button routerLink="/home" color="dark">Volver</ion-button>
+  </header>
+  
+  <div id="container">
+    <div class="container" style="padding: 5%;">
+      <ion-title>¡Bienvenido a TeLLevoApp!</ion-title>
+      <br>
+      <p>Ingrese sus datos</p>
+      <br>
+    </div>
+    
+    <div style="padding: 10%;">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Usuario" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput placeholder="******">
+      </mat-form-field>
+
+    </div>
+    <ion-button [routerLink]="['/home']" style="margin-bottom: 5%;"  color="dark">Ingresar</ion-button>
+    <br>
+    <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
+
+    
+  </div>
+
 </ion-content>
