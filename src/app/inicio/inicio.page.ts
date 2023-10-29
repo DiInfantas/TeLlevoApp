@@ -31,5 +31,5 @@ export class InicioPage implements OnInit {
  
   ngOnInit() {
     const username = this.activatedRoute.snapshot.queryParams['username'];
-    console.log('Bienvenido, ' + username);
+    console.log(username);
    } }

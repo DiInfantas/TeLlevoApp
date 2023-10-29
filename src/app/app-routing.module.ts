@@ -28,6 +28,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'registro',
+    redirectTo: 'registro',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
     redirectTo: 'p404',
     pathMatch: 'full'
@@ -55,6 +60,11 @@ const routes: Routes = [
     path: 'inicio',
     loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+
 ];
 
 @NgModule({

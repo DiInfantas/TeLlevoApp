@@ -11,13 +11,13 @@
      <div class="container" style="padding: 5%;">
        <ion-title>¡Bienvenido a TeLLevoApp!</ion-title>
        <br>
-       <p>Ingrese sus datos</p>
+       <p>Registrate</p>
        <br>
      </div>
      
      <div style="padding: 10%;">
        
-         <form [formGroup]="formularioLogin">
+         <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
             <ion-item>
                <ion-label position="floating">Usuario</ion-label>
                <ion-input formControlName="usuario"></ion-input>
@@ -26,16 +26,14 @@
                <ion-label position="floating">contraseña</ion-label>
                <ion-input formControlName="password" type="password"></ion-input>
             </ion-item>
+            <ion-item>
+              <ion-label position="floating">Confirme contraseña</ion-label>
+              <ion-input formControlName="ConfirmacionPassword" type="password"></ion-input>
+           </ion-item>
          </form>
          <br>
-         <ion-button click="ingresar()" routerLink="/inicio" color="dark">Ingresar</ion-button>
+         <ion-button (click)="guardar()" >Registrarse</ion-button>
      </div>
-     <br>
-     <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
-     <br>
-     <a [routerLink]="['/registro']">No tienes cuenta? Registrate</a>
- 
-     
   </div>
  
  </ion-content>

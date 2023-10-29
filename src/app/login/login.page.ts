@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators,} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators,} from '@angular/forms';
 import {  ActivatedRoute,ParamMap } from '@angular/router';
 import { NavigationExtras, Router } from '@angular/router';
 @Component({
@@ -9,21 +9,21 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 
 export class LoginPage implements OnInit {
- 
-  email = new FormControl('', [Validators.required, Validators.email]);
+    
+  formularioLogin: FormGroup;
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Debes ingresar un valor';
-    }
-
-    return this.email.hasError('email') ? 'No es un correo válido' : '';
-  }
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    public fb: FormBuilder
+) { 
+  this.formularioLogin = this.fb.group({
+    'Usuario': new FormControl("",Validators.required),
+    'password': new FormControl("",Validators.required)
+
+    })
+  }
 
   ngOnInit() {
     }
