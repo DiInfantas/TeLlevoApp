@@ -14,15 +14,27 @@ export class AppComponent {
 
 
   obtener_localstorage(){
+    let usuario = JSON.stringify(localStorage.getItem('usuario'));
 
     let nombre = localStorage.getItem("nombre");
     let persona = JSON.stringify(localStorage.getItem("persona"));
     
     console.log(nombre);
     console.log(persona);
+    console.log(usuario);
   }
 
   grabar_localstorage(){
+    
+    let usuario = {
+      id: 1,
+      nombre: 'Juan',
+      correo: 'juan@gmail.com',
+      clave: '123456'
+     };
+     
+     
+
     let nombre = "Nico robin";
     
     let persona ={
@@ -39,6 +51,10 @@ export class AppComponent {
 
   localStorage.setItem("nombre",nombre);
   localStorage.setItem("persona",JSON.stringify(persona));
+  
+  
+  localStorage.setItem('usuario', JSON.stringify(usuario));
+
   }
 
 }

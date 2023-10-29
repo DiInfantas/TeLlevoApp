@@ -7,5 +7,26 @@
   </header>
   <ion-title>¡Bienvenido</ion-title>
   <br>
+  <h2>Coloque su sede y su localizacion</h2>
+  <ion-list>
+    <ion-item>
+      <ion-input label="Universidad/Ip"></ion-input>
+    </ion-item>
   
+    <ion-item>
+      <ion-input label="Sede" placeholder="opcional*"></ion-input>
+    </ion-item>
   
+  </ion-list>
+  <ion-header>
+  
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-button expand="block" (click)="setOpen(true)">Buscar Conductor</ion-button>
+    <ion-toast
+      [isOpen]="isToastOpen"
+      message="Buscando"
+      [duration]="5000"
+      (didDismiss)="setOpen(false)"
+    ></ion-toast>
+  </ion-content>

@@ -7,6 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
+
+  isToastOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isToastOpen = isOpen;
+  }
+
   username: string='';
  
   constructor(
