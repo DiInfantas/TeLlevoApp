@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators,FormGroup} from '@angular/forms';
-import {  ActivatedRoute } from '@angular/router';
+import { FormControl, Validators,} from '@angular/forms';
+import {  ActivatedRoute,ParamMap } from '@angular/router';
 import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
