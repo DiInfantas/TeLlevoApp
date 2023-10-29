@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -8,19 +9,25 @@ import { Router } from '@angular/router';
 })
 export class InicioPage implements OnInit {
 
-  isToastOpen = false;
-
-  setOpen(isOpen: boolean) {
-    this.isToastOpen = isOpen;
-  }
-
+  
   username: string='';
  
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private toastController: ToastController,
     
     ) { }
+    async presentToast(position: 'top' | 'middle' | 'bottom') {
+      const toast = await this.toastController.create({
+        message: 'Espere porfavor',
+        duration: 1500,
+        position: position,
+      });
+  
+      await toast.present();
+    }
+  
  
   ngOnInit() {
     const username = this.activatedRoute.snapshot.queryParams['username'];
