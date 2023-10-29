@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-
+import { FormControl, Validators,FormGroup} from '@angular/forms';
+import {  ActivatedRoute } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -9,14 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class LoginPage implements OnInit {
-  hide = true;
-  recuerdame = false;
-
-  user = {
-    username: '',
-    password: '',
-  };
-
+ 
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
@@ -33,16 +26,22 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
-  
-  }
+    }
 
-  login() {
-    // Supongamos que el usuario ha iniciado sesión con éxito y tienes el nombre de usuario.
-    const username = this.user.username;
 
-    // Navega a la página de perfil y pasa el nombre de usuario como parámetro.
-    this.router.navigate(['/users', { username }]);
-
-    // También puedes guardar el nombre de usuario en localStorage o en una variable de servicio si es necesario.
-  }
+  Login() {
+  // Asegúrate de verificar si el inicio de sesión es exitoso antes de navegar
+  // Aquí simplemente uso 'username' como un ejemplo
+  const username = 'username';
+ 
+  // Preparar los extras de navegación
+  const navigationExtras: NavigationExtras = {
+     state: {
+       username: username
+     }
+  };
+ 
+  // Navegar a la página de inicio
+      this.router.navigate(['/inicio'], navigationExtras);
+ }
 }

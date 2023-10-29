@@ -1,37 +1,40 @@
 <ion-content [fullscreen]="true">
   <header style="padding:5%;">
   <section>
-    
-    <div class="example-flex-container"></div>
+     
+     <div class="example-flex-container"></div>
   </section>    
-    <ion-button routerLink="/home" color="dark">Volver</ion-button>
+     <ion-button routerLink="/home" color="dark">Volver</ion-button>
   </header>
-  
+   
   <div id="container">
-    <div class="container" style="padding: 5%;">
-      <ion-title>¡Bienvenido a TeLLevoApp!</ion-title>
-      <br>
-      <p>Ingrese sus datos</p>
-      <br>
-    </div>
-    
-    <div style="padding: 10%;">
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Usuario</mat-label>
-        <input matInput placeholder="Usuario" >
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Contraseña</mat-label>
-        <input type="password" matInput placeholder="******">
-      </mat-form-field>
-
-    </div>
-    <ion-button [routerLink]="['/inicio']" style="margin-bottom: 5%;"  color="dark">Ingresar</ion-button>
-    <br>
-    <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
-
-    
+     <div class="container" style="padding: 5%;">
+       <ion-title>¡Bienvenido a TeLLevoApp!</ion-title>
+       <br>
+       <p>Ingrese sus datos</p>
+       <br>
+     </div>
+     
+     <div style="padding: 10%;">
+       
+           <div style="margin-bottom: 1rem;">
+            <form (submit)="enviarDatos()">
+               <label for="nombreUsuario">Usuario</label>
+               <input id="nombreUsuario" type="text" placeholder="nombreUsuario" name="nombreUsuario" ngModel=""input >
+           </div>
+         </form>
+           <div>
+               <label for="password">Contraseña</label>
+               <input id="password" type="password" placeholder="******" name="password" ngModel required>
+           </div>
+           <br>
+           <ion-button  [routerLink]="['/inicio']" expand="full" color="dark" type="submit">Ingresar</ion-button>
+      
+     </div>
+     <br>
+     <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
+ 
+     
   </div>
-
-</ion-content>
+ 
+ </ion-content>

@@ -23,7 +23,7 @@ export class AppComponent {
   }
 
   grabar_localstorage(){
-    let nombre = "Diego";
+    let nombre = "Nico robin";
     
     let persona ={
       nombre:"Tomas",
