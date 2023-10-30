@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {  ActivatedRoute } from '@angular/router';
 import {  Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,8 +18,8 @@ export class LoginPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public fb: FormBuilder,
-    public alertController: AlertController
-) { 
+    public alertController: AlertController,
+    public navCtrl: NavController) { 
   this.formularioLogin = this.fb.group({
     'Usuario': new FormControl("",Validators.required),
     'password': new FormControl("",Validators.required)
@@ -37,6 +37,7 @@ export class LoginPage implements OnInit {
         if (usuario.nombre == f.nombre && usuario.password == f.password) {
           console.log('Ingresado');
           localStorage.setItem('ingresado', 'true');
+          this.navCtrl.navigateRoot('inicio');
         } else {
           const alert = await this.alertController.create({
             header: 'Datos incorrectos',
