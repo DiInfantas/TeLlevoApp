@@ -9,9 +9,7 @@ import { AlertController } from '@ionic/angular';
 export class RegistroPage implements OnInit {
   formularioRegistro: FormGroup;
   
-  constructor(
-    public fb: FormBuilder,
-    public alertController: AlertController) { 
+  constructor( public fb: FormBuilder,public alertController: AlertController) { 
       this.formularioRegistro = this.fb.group({
         'Usuario': new FormControl("",Validators.required),
         'password': new FormControl("",Validators.required),
@@ -36,6 +34,13 @@ export class RegistroPage implements OnInit {
     await alert.present();
     return;
     }
+
+    var usuario = {
+      usuario: f.usuario,
+      password: f.password
+    }
+
+    localStorage.setItem('usuario',JSON.stringify(usuario));
   }
 
 }
