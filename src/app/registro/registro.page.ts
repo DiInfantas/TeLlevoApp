@@ -40,7 +40,7 @@ export class RegistroPage implements OnInit {
       password: f.password
     }
 
-    localStorage.setItem('usuario',JSON.stringify(usuario));
+    localStorage.setItem('Usuario',JSON.stringify(usuario));
   }
 
 }
