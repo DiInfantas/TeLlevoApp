@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController,NavController } from '@ionic/angular';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -16,6 +16,7 @@ export class InicioPage implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toastController: ToastController,
+    public navCtrl: NavController
     
     ) { }
     async presentToast(position: 'top' | 'middle' | 'bottom') {
@@ -32,4 +33,10 @@ export class InicioPage implements OnInit {
   ngOnInit() {
     const username = this.activatedRoute.snapshot.queryParams['username'];
     console.log(username);
-   } }
+   } 
+
+  salir(){
+    localStorage.removeItem('ingresado');
+    this.navCtrl.navigateRoot('home');
+  }
+}
