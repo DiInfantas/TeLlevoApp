@@ -7,10 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginPage } from './login/login.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   
-  declarations: [AppComponent],
+  declarations: [AppComponent,  HttpClientModule],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from './service/api.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  datos: any;
 
-  constructor() {
+  constructor(private apiService: ApiService) {}
+
+  obtenerDatos() {
+    this.apiService.getVehiculos().subscribe(
+      (data) => {
+        this.datos = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
-
 }
+ 
