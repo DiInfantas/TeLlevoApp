@@ -37,6 +37,6 @@ export class InicioPage implements OnInit {
 
   salir(){
     localStorage.removeItem('ingresado');
-    this.navCtrl.navigateRoot('home');
+    this.navCtrl.navigateRoot('login');
   }
 }
