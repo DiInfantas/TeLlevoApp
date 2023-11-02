@@ -42,7 +42,8 @@ const routes: Routes = [
 
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [NoIngresadoGuard]
   },
   
   {
@@ -52,7 +53,8 @@ const routes: Routes = [
   },
   {
     path: 'passrec',
-    loadChildren: () => import('./passrec/passrec.module').then( m => m.PassrecPageModule)
+    loadChildren: () => import('./passrec/passrec.module').then( m => m.PassrecPageModule),
+    canActivate: [NoIngresadoGuard]
   },
   
   {

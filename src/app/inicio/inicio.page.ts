@@ -10,11 +10,11 @@ import { ToastController,NavController } from '@ionic/angular';
 export class InicioPage implements OnInit {
 
   
-  username: string='';
+  name: any;
  
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private toastController: ToastController,
     public navCtrl: NavController
     
@@ -31,9 +31,11 @@ export class InicioPage implements OnInit {
   
  
   ngOnInit() {
-    const username = this.activatedRoute.snapshot.queryParams['username'];
-    console.log(username);
-   } 
+    this.route.queryParams.subscribe((params:any) => {
+      console.log(params)
+      this.name = params.data  
+    })
+  } 
 
   salir(){
     localStorage.removeItem('ingresado');

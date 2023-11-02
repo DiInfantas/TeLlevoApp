@@ -26,8 +26,12 @@ export class LoginPage implements OnInit {
 
     })
   }
-
+ name: any;
   ngOnInit() {
+    }
+
+    Rnombre(){
+      this.router.navigate(['/inicio'],{queryParams:{data:this.name}})
     }
     async ingresar() {
       var f = this.formularioLogin.value;
@@ -47,7 +51,7 @@ export class LoginPage implements OnInit {
           await alert.present();
         }
       } else {
-
+        
       }
 
   }
