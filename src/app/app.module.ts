@@ -6,6 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatInputModule} from '@angular/material/input';
+import {NgFor, NgIf} from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
   
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,
-    HttpClientModule,MatIconModule, MatButtonModule, MatToolbarModule, MatProgressBarModule,BrowserAnimationsModule],
+    HttpClientModule,MatIconModule, MatButtonModule, MatToolbarModule, MatProgressBarModule,BrowserAnimationsModule,MatInputModule,
+    NgFor, NgIf,MatSelectModule,MatFormFieldModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
