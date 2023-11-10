@@ -18,10 +18,10 @@ import { FormControl,Validators, } from '@angular/forms';
 })
 export class InicioPage implements OnInit {
 
+//variable para saber el nombre del usuario
+  usuarioLogin: any;
 
-  
-  name: any;
- 
+  nombre: string = 'Pedrito';
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -41,10 +41,7 @@ export class InicioPage implements OnInit {
   
  
   ngOnInit() {
-    this.route.queryParams.subscribe((params:any) => {
-      console.log(params)
-      this.name = params.data  
-    })
+    this.usuarioLogin = this.router.getCurrentNavigation()?.extras.state;
   } 
 
   salir(){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {  ActivatedRoute } from '@angular/router';
+import {  ActivatedRoute, NavigationExtras } from '@angular/router';
 import {  Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
 @Component({
@@ -31,7 +31,14 @@ export class LoginPage implements OnInit {
     }
 
     Rnombre(){
-      this.router.navigate(['/inicio'],{queryParams:{data:this.name}})
+      //NavigationExtras
+      var navigationExtras: NavigationExtras = {
+        state: {
+          nombre:'Pedro'
+        }
+      };
+      
+      this.router.navigate(['/inicio'],navigationExtras);
     }
     async ingresar() {
       var f = this.formularioLogin.value;
