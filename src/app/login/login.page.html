@@ -19,7 +19,7 @@
        
          <form [formGroup]="formularioLogin">
             <ion-item>
-               <ion-label position="floating">Usuario</ion-label>
+               <ion-label position="floating" type="text" [(ngModel)]="texto">Usuario</ion-label>
                <ion-input formControlName="Usuario"></ion-input>
             </ion-item>
             <ion-item>

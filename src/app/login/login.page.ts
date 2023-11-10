@@ -30,16 +30,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     }
 
-    Rnombre(){
-      //NavigationExtras
-      var navigationExtras: NavigationExtras = {
-        state: {
-          nombre:'Pedro'
-        }
-      };
-      
-      this.router.navigate(['/inicio'],navigationExtras);
-    }
     async ingresar() {
       var f = this.formularioLogin.value;
       var usuarioString = localStorage.getItem('usuario');

@@ -41,7 +41,7 @@ export class InicioPage implements OnInit {
   
  
   ngOnInit() {
-    this.usuarioLogin = this.router.getCurrentNavigation()?.extras.state;
+   
   } 
 
   salir(){
