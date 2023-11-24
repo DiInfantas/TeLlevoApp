@@ -7,7 +7,9 @@ import {NgFor, NgIf} from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormControl,Validators, } from '@angular/forms';
-
+import { ApiService } from '../service/api.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -21,12 +23,15 @@ export class InicioPage implements OnInit {
 //variable para saber el nombre del usuario
   usuarioLogin: any;
 
+
   nombre: string = 'Pedrito';
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private toastController: ToastController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private api: ApiService
+
     
     ) { }
     async presentToast(position: 'top' | 'middle' | 'bottom') {
@@ -39,13 +44,14 @@ export class InicioPage implements OnInit {
       await toast.present();
     }
   
- 
-  ngOnInit() {
-   
-  } 
+  ngOnInit() {   
+  }
+
+  
 
   salir(){
     localStorage.removeItem('ingresado');
     this.navCtrl.navigateRoot('login');
   }
+
 }
