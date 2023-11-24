@@ -12,11 +12,22 @@
   
   <ion-button routerLink="/creacion-vi"   expand="block" (click)="presentToast('bottom')">Generar viaje</ion-button>
   <br>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let datos of datos">
+        <ion-label></ion-label>
+
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
   <br>
   <br>
   <ion-item>
     <ion-label>Se quiere ir? 😔 haga clieck aqui</ion-label>
     <ion-button color="danger" (click)="salir()">Cerrar Sesion</ion-button>
       </ion-item>
+  
 
   

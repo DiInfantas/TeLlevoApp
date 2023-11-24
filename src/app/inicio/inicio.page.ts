@@ -22,16 +22,17 @@ export class InicioPage implements OnInit {
 
 //variable para saber el nombre del usuario
   usuarioLogin: any;
-
+  datos = []
 
   nombre: string = 'Pedrito';
   constructor(
+    private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
     private toastController: ToastController,
     public navCtrl: NavController,
     private api: ApiService
-
+ 
     
     ) { }
     async presentToast(position: 'top' | 'middle' | 'bottom') {
@@ -44,7 +45,13 @@ export class InicioPage implements OnInit {
       await toast.present();
     }
   
-  ngOnInit() {   
+  ngOnInit() {  
+    this.http.get<any>('http://127.0.0.1:8000/api/lista_viajes')
+    .subscribe(res => {
+      console.log(res);
+      this.datos = res.results;
+
+    })
   }
 
   
