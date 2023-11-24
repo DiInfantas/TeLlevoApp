@@ -35,6 +35,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'creacion-vi',
+    redirectTo:'creacion-vi',
+    pathMatch:'full'    
+  },
+  {
     path: '**',
     redirectTo: 'p404',
     pathMatch: 'full'
@@ -70,13 +75,15 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule),
     canActivate:[NoIngresadoGuard]
-  },  {
+  },
+  {
     path: 'ingreso-vehi',
     loadChildren: () => import('./ingreso-vehi/ingreso-vehi.module').then( m => m.IngresoVehiPageModule)
   },
   {
     path: 'creacion-vi',
-    loadChildren: () => import('./creacion-vi/creacion-vi.module').then( m => m.CreacionViPageModule)
+    loadChildren: () => import('./creacion-vi/creacion-vi.module').then( m => m.CreacionViPageModule),
+    canActivate:[IngresadoGuard]
   },
 
 

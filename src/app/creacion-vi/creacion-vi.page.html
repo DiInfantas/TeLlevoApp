@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>CreacionVi</ion-title>
+    <ion-title>Creacion de viaje </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +10,37 @@
       <ion-title size="large">CreacionVi</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-item>
+    <ion-label position="floating">Destino</ion-label>
+    <ion-input placeholder="Ingrese su destino"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Ubicación de Recogida</ion-label>
+    <ion-input placeholder="Ingrese su ubicación de recogida"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tipo de Vehículo</ion-label>
+    <ion-select placeholder="Seleccione el tipo de vehículo">
+      <ion-select-option value="uberx">Chevrolet</ion-select-option>
+      <ion-select-option value="uberxl">Nissan</ion-select-option>
+      <!-- Agrega más opciones según tus necesidades -->
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Número de Pasajeros</ion-label>
+    <ion-input type="number" min="1" [(ngModel)]="passengerCount" (ionChange)="updateTotalCost()"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="stacked">Costo Total ($)</ion-label>
+    <ion-input type="text" [value]="totalCost" readonly></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="requestTrip()">Crear viaje</ion-button>
+    <br>
+  <ion-button  routerLink="/inicio"  color="danger"   expand="full">cancelar viaje</ion-button>
 </ion-content>
+
