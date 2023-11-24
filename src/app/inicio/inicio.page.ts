@@ -18,11 +18,16 @@ import { Observable } from 'rxjs';
   styleUrls: ['./inicio.page.scss'],
   
 })
+
+
 export class InicioPage implements OnInit {
 
 //variable para saber el nombre del usuario
   usuarioLogin: any;
-  datos = []
+
+  //api
+  viajes: any[]=[]; //guardado de datos del service
+  mostrarViajes: boolean=false;
 
   nombre: string = 'Pedrito';
   constructor(
@@ -31,10 +36,24 @@ export class InicioPage implements OnInit {
     private route: ActivatedRoute,
     private toastController: ToastController,
     public navCtrl: NavController,
-    private api: ApiService
- 
-    
-    ) { }
+    private apiService: ApiService
+    )  { }
+
+    cargarViajes() {
+      this.apiService.getViajes().subscribe(data =>{
+        //asigna datos a la variable viajes
+        this.viajes=data;
+        //activa el boolean para mostrar los viajes
+        this.mostrarViajes=true;
+        console.log('Primer objeto de viaje:', this.viajes[0]);
+      })
+    }
+
+
+
+
+    //mensaje de 'espere'
+
     async presentToast(position: 'top' | 'middle' | 'bottom') {
       const toast = await this.toastController.create({
         message: 'Espere porfavor',
@@ -46,12 +65,7 @@ export class InicioPage implements OnInit {
     }
   
   ngOnInit() {  
-    this.http.get<any>('http://127.0.0.1:8000/api/lista_viajes')
-    .subscribe(res => {
-      console.log(res);
-      this.datos = res.results;
-
-    })
+    
   }
 
   

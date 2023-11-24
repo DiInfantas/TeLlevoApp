@@ -10,24 +10,44 @@
     Aqui puede Solicitar su viaje 
     <ion-card-content>
   
-  <ion-button routerLink="/creacion-vi"   expand="block" (click)="presentToast('bottom')">Generar viaje</ion-button>
+  
   <br>
-  <ion-content>
-    <ion-list>
-      <ion-item *ngFor="let datos of datos">
-        <ion-label></ion-label>
+  
+  <ion-button (click)="cargarViajes()">Buscar Viajes</ion-button>
 
+  <ion-list *ngIf="mostrarViajes">
+    
+      <ion-card *ngFor="let viaje of viajes">
+        <ion-card-header>
+          Datos del conductor**
+        </ion-card-header>
+        <p>Hora salida: {{ viaje.hora_salida }}</p>
+        <p>Desde: {{ viaje.lugarInicio }}</p>
+        <p>Destino: {{ viaje.destino }}</p>
+        <p>Precio: ${{ viaje.precio }}</p>
+        <a href="">
+          Solicitar asiento
+        </a>
+      </ion-card>
 
-      </ion-item>
-    </ion-list>
+  </ion-list>
 
-  </ion-content>
+ 
   <br>
   <br>
+  
+  <ion-item style="padding-top: 200px">
+    
+    <ion-label>Manejas tu?</ion-label>
+    <ion-button routerLink="/creacion-vi"   expand="block" (click)="presentToast('bottom')">Generar viaje</ion-button>
+  </ion-item>
+  
+
   <ion-item>
-    <ion-label>Se quiere ir? 😔 haga clieck aqui</ion-label>
+    
+    <ion-label>Se quiere ir?</ion-label>
     <ion-button color="danger" (click)="salir()">Cerrar Sesion</ion-button>
-      </ion-item>
+  </ion-item>
   
 
   
