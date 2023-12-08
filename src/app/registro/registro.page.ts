@@ -25,10 +25,6 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
  async guardar(){
-  const pageToNavigate = this.selectedOption === 'conductor' ? '/creacion-vi' : '/inicio';
-  this.navCtrl.navigateForward(pageToNavigate);
-
-
     var f = this.formularioRegistro.value;
 
     if(this.formularioRegistro.invalid){

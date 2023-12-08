@@ -1,59 +1,43 @@
 <ion-content [fullscreen]="true">
-  <header style="padding:5%;">
-  <section>
-     
-     <div class="example-flex-container"></div>
-  </section>    
-     
+  <header style="padding: 5%;">
+    <section>
+      <div class="example-flex-container"></div>
+    </section>
   </header>
-   
+
   <div id="container">
-     <div class="container" style="padding: 5%;">
-       <ion-title>¡Bienvenido a TeLLevoApp!</ion-title>
-       <br>
-       <p>Ingrese sus datos</p>
-       <br>
-     </div>
-     
-     <div style="padding: 10%;">
-       
-         <form [formGroup]="formularioLogin">
+    <div class="container" style="padding: 5%;">
+      <ion-title>¡Bienvenido a TeLLevoApp!</ion-title>
+      <br>
+      <p>Ingrese sus datos</p>
+      <br>
+    </div>
 
-            <ion-item>
-               <ion-label position="floating" >Usuario</ion-label>
-               <ion-input formControlName="Usuario"></ion-input>
-            </ion-item>
-            <ion-item>
-               <ion-label position="floating">contraseña</ion-label>
-               <ion-input formControlName="password" type="password"></ion-input>
-            </ion-item>
+    <div style="padding: 10%;">
+      <form [formGroup]="formularioLogin">
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input formControlName="Usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
 
-            <ion-list>
-               <ion-radio-group [(ngModel)]="selectedOption">
-                 <ion-item>
-                   <ion-label>Conductor</ion-label>
-                   <ion-radio value="conductor"></ion-radio>
-                 </ion-item>
-           
-                 <ion-item>
-                   <ion-label>Pasajero</ion-label>
-                   <ion-radio value="pasajero"></ion-radio>
-                 </ion-item>
-               </ion-radio-group>
-             </ion-list>
+        <ion-item>
+          <ion-label>Tipo de Usuario</ion-label>
+          <ion-checkbox formControlName="tipoUsuario" value="conductor">Conductor</ion-checkbox>
+          <ion-checkbox formControlName="tipoUsuario" value="pasajero">Pasajero</ion-checkbox>
+        </ion-item>
+      </form>
 
-         </form>
+      <br>
+      <ion-button (click)="ingresar()" color="dark">Ingresar</ion-button>
+    </div>
 
-          <br>
-         <ion-button (click)="ingresar(); " color="dark">Ingresar</ion-button>
-
-     </div>
-     <br>
-     <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
-     <br>
-     <a [routerLink]="['/registro']">No tienes cuenta? Registrate</a>
- 
-     
+    <br>
+    <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
+    <br>
+    <a [routerLink]="['/registro']">¿No tienes cuenta? Regístrate</a>
   </div>
- 
- </ion-content>
+</ion-content>

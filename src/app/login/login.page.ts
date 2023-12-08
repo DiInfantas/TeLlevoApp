@@ -12,7 +12,7 @@ import { AlertController, NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
     
   formularioLogin: FormGroup;
-  selectedOption: string = 'conductor';
+  
 
   constructor(
     private router: Router,
@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController) { 
   this.formularioLogin = this.fb.group({
     'Usuario': new FormControl("",Validators.required),
-    'password': new FormControl("",Validators.required)
+    'password': new FormControl("",Validators.required),
+    'tipoUsuario': new FormControl("", Validators.required)
 
     })
   }
@@ -31,17 +32,28 @@ export class LoginPage implements OnInit {
     }
 
     async ingresar() {
-      
+      var f = this.formularioLogin.value;
+      console.log('Tipo de Usuario:', f.tipoUsuario);
       var f = this.formularioLogin.value;
       var usuarioString = localStorage.getItem('Usuario');
+    
       if (usuarioString !== null) {
         var usuario = JSON.parse(usuarioString);
+        
         if (usuario.nombre == f.nombre && usuario.password == f.password) {
-          const pageToNavigate = this.selectedOption === 'conductor' ?  '/inicio' : '/creacion-vi';
-            console.log('Ingresado');
-            localStorage.setItem('ingresado', 'true');
-            this.navCtrl.navigateForward(pageToNavigate);
-          
+          console.log('Ingresado');
+    
+          // Obtener el valor seleccionado del checkbox
+          var tipoUsuario = this.formularioLogin.controls['tipoUsuario'].value;
+    
+          // Navegar a la página correspondiente
+          if (tipoUsuario === 'conductor') {
+            this.router.navigate(['/creacion-vi']);
+          } else if (tipoUsuario === 'pasajero') {
+            this.router.navigate(['/inicio']);
+          }
+    
+          localStorage.setItem('ingresado', 'true');
         } else {
           const alert = await this.alertController.create({
             header: 'Datos incorrectos',
@@ -51,10 +63,9 @@ export class LoginPage implements OnInit {
           await alert.present();
         }
       } else {
-        
+        // Manejar el caso cuando no hay usuario almacenado
       }
-
-  }
+    }
   
 }
 
