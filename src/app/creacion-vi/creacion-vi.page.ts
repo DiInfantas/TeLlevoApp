@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {  NavController } from '@ionic/angular'
 @Component({
   selector: 'app-creacion-vi',
   templateUrl: './creacion-vi.page.html',
@@ -14,7 +14,9 @@ export class CreacionViPage implements OnInit {
   costPerPassenger: number;
  
 
-  constructor() {
+  constructor(
+    public navCtrl: NavController
+  ) {
     this.destination = '';
     this.pickupLocation = '';
     this.selectedVehicleType = '';
@@ -40,6 +42,10 @@ export class CreacionViPage implements OnInit {
     console.log('Tipo de Vehículo:', this.selectedVehicleType);
     console.log('Número de Pasajeros:', this.passengerCount);
     console.log('Costo por Pasajero:', this.costPerPassenger);
+  }
+  salir(){
+    localStorage.removeItem('ingresado');
+    this.navCtrl.navigateRoot('login');
   }
 }
 

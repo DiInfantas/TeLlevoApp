@@ -27,6 +27,20 @@
               <ion-label position="floating">Confirme contraseña</ion-label>
               <ion-input formControlName="ConfirmacionPassword" type="password"></ion-input>
            </ion-item>
+           <ion-list>
+            <ion-radio-group [(ngModel)]="selectedOption">
+              <ion-item>
+                <ion-label>Conductor</ion-label>
+                <ion-radio value="conductor"></ion-radio>
+              </ion-item>
+        
+              <ion-item>
+                <ion-label>Pasajero</ion-label>
+                <ion-radio value="pasajero"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          
          </form>
          <br>
          <ion-button (click)="guardar()" >Registrarse

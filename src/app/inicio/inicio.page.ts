@@ -10,7 +10,7 @@ import { FormControl,Validators, } from '@angular/forms';
 import { ApiService } from '../service/api.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-inicio',
@@ -30,15 +30,27 @@ export class InicioPage implements OnInit {
   mostrarViajes: boolean=false;
 
   nombre: string = 'Pedrito';
+  alertController: any;
   constructor(
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
     private toastController: ToastController,
     public navCtrl: NavController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    alertController: AlertController,
+    
     )  { }
 
+    async mostrarAlerta() {
+      const alert = await this.alertController.create({
+        header: 'Alerta',
+        message: 'Notificaremos al conductor',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
+    }
     cargarViajes() {
       this.apiService.getViajes().subscribe(data =>{
         //asigna datos a la variable viajes

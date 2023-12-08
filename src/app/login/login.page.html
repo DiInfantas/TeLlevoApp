@@ -18,6 +18,7 @@
      <div style="padding: 10%;">
        
          <form [formGroup]="formularioLogin">
+
             <ion-item>
                <ion-label position="floating" >Usuario</ion-label>
                <ion-input formControlName="Usuario"></ion-input>
@@ -26,9 +27,26 @@
                <ion-label position="floating">contraseña</ion-label>
                <ion-input formControlName="password" type="password"></ion-input>
             </ion-item>
+
+            <ion-list>
+               <ion-radio-group [(ngModel)]="selectedOption">
+                 <ion-item>
+                   <ion-label>Conductor</ion-label>
+                   <ion-radio value="conductor"></ion-radio>
+                 </ion-item>
+           
+                 <ion-item>
+                   <ion-label>Pasajero</ion-label>
+                   <ion-radio value="pasajero"></ion-radio>
+                 </ion-item>
+               </ion-radio-group>
+             </ion-list>
+
          </form>
-         <br>
-         <ion-button (click)="ingresar()" color="dark">Ingresar</ion-button>
+
+          <br>
+         <ion-button (click)="ingresar(); " color="dark">Ingresar</ion-button>
+
      </div>
      <br>
      <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>

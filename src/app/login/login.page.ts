@@ -12,7 +12,7 @@ import { AlertController, NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
     
   formularioLogin: FormGroup;
-
+  selectedOption: string = 'conductor';
 
   constructor(
     private router: Router,
@@ -31,14 +31,17 @@ export class LoginPage implements OnInit {
     }
 
     async ingresar() {
+      
       var f = this.formularioLogin.value;
-      var usuarioString = localStorage.getItem('usuario');
+      var usuarioString = localStorage.getItem('Usuario');
       if (usuarioString !== null) {
         var usuario = JSON.parse(usuarioString);
         if (usuario.nombre == f.nombre && usuario.password == f.password) {
-          console.log('Ingresado');
-          localStorage.setItem('ingresado', 'true');
-          this.navCtrl.navigateRoot('inicio');
+          const pageToNavigate = this.selectedOption === 'conductor' ?  '/inicio' : '/creacion-vi';
+            console.log('Ingresado');
+            localStorage.setItem('ingresado', 'true');
+            this.navCtrl.navigateForward(pageToNavigate);
+          
         } else {
           const alert = await this.alertController.create({
             header: 'Datos incorrectos',

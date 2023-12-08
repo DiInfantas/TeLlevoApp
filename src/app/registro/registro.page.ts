@@ -8,7 +8,8 @@ import { AlertController,NavController } from '@ionic/angular';
 })
 export class RegistroPage implements OnInit {
   formularioRegistro: FormGroup;
-  
+  selectedOption: string = 'conductor';
+
   constructor( public fb: FormBuilder,
     public alertController: AlertController,
     public navCtrl: NavController) { 
@@ -24,6 +25,10 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
  async guardar(){
+  const pageToNavigate = this.selectedOption === 'conductor' ? '/creacion-vi' : '/inicio';
+  this.navCtrl.navigateForward(pageToNavigate);
+
+
     var f = this.formularioRegistro.value;
 
     if(this.formularioRegistro.invalid){
@@ -45,7 +50,7 @@ export class RegistroPage implements OnInit {
     localStorage.setItem('Usuario',JSON.stringify(usuario));
 
     localStorage.setItem('ingresado', 'true');
-    this.navCtrl.navigateRoot('inicio');
+    
   }
 
 }
