@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {  NavController } from '@ionic/angular'
+import { NavController } from '@ionic/angular';
+import { ApiService } from '../service/api.service';
+import { Viaje } from '../models/viaje.model';
+
 @Component({
   selector: 'app-creacion-vi',
   templateUrl: './creacion-vi.page.html',
@@ -12,10 +15,10 @@ export class CreacionViPage implements OnInit {
   selectedVehicleType: string;
   passengerCount: number;
   costPerPassenger: number;
- 
 
   constructor(
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private apiService: ApiService
   ) {
     this.destination = '';
     this.pickupLocation = '';
@@ -23,29 +26,37 @@ export class CreacionViPage implements OnInit {
     this.passengerCount = 1;
     this.costPerPassenger = 1500;
     this.updateTotalCost();
-   }
-
-   
-
-  ngOnInit() {
   }
-  
+
+  ngOnInit() {}
+
   updateTotalCost() {
     this.totalCost = this.passengerCount * this.costPerPassenger;
   }
-  
+
   requestTrip() {
-    // Aquí puedes manejar la lógica para enviar la solicitud del viaje
-    console.log('Solicitud de viaje enviada');
-    console.log('Destino:', this.destination);
-    console.log('Ubicación de Recogida:', this.pickupLocation);
-    console.log('Tipo de Vehículo:', this.selectedVehicleType);
-    console.log('Número de Pasajeros:', this.passengerCount);
-    console.log('Costo por Pasajero:', this.costPerPassenger);
+    const viaje: Viaje = {
+      destino: this.destination,
+      ubicacionRecogida: this.pickupLocation,
+      tipoVehiculo: this.selectedVehicleType,
+      numeroPasajeros: this.passengerCount,
+      costoTotal: this.totalCost,
+    };
+
+    this.apiService.createViaje(viaje).subscribe(
+      (response: any) => {
+        console.log('Solicitud de viaje enviada. Respuesta de la API:', response);
+        // Maneja la respuesta según sea necesario
+      },
+      (error: any) => {
+        console.error('Error al enviar datos a la API:', error);
+        // Maneja el error según sea necesario
+      }
+    );
   }
-  salir(){
+
+  salir() {
     localStorage.removeItem('ingresado');
     this.navCtrl.navigateRoot('login');
   }
 }
-

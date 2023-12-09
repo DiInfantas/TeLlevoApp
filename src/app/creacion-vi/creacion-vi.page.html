@@ -4,43 +4,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">CreacionVi</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-item>
-    <ion-label position="floating">Lugar de destino</ion-label>
-    <ion-input placeholder="Ingrese su destino"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Ubicación </ion-label>
-    <ion-input placeholder="Ingrese su ubicación de recogida"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Tipo de Vehículo</ion-label>
-    <ion-select placeholder="Seleccione el tipo de vehículo">
-      <ion-select-option value="autox">Chevrolet</ion-select-option>
-      <ion-select-option value="autoxl">Nissan</ion-select-option>
-     
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Número de Pasajeros</ion-label>
-    <ion-input type="number" min="1" [(ngModel)]="passengerCount" (ionChange)="updateTotalCost()"></ion-input>
-  </ion-item>
-
-
-  <ion-item>
-    <ion-label position="stacked">Costo Total ($)</ion-label>
-    <ion-input type="text" [value]="totalCost" readonly></ion-input>
-  </ion-item>
-
-  <ion-button expand="full" (click)="requestTrip()">Crear viaje</ion-button>
-    <br>
-  <ion-button   color="danger"   expand="full" (click)="salir()">cancelar viaje</ion-button>
-</ion-content>
+<ion-content>
+  <form (ngSubmit)="requestTrip()">
+     <ion-item>
+       <ion-label position="floating">Destino</ion-label>
+       <ion-input type="text" [(ngModel)]="destination" name="destination" required></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label position="floating">Ubicación de recogida</ion-label>
+       <ion-input type="text" [(ngModel)]="pickupLocation" name="pickupLocation" required></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Tipo de vehículo</ion-label>
+       <ion-select [(ngModel)]="selectedVehicleType" name="selectedVehicleType" required>
+         <ion-select-option value="Carro">Auto</ion-select-option>
+         <ion-select-option value="Camioneta">Camioneta</ion-select-option>
+       </ion-select>
+     </ion-item>
+     <ion-item>
+       <ion-label position="floating">Número de pasajeros</ion-label>
+       <ion-input type="number" [(ngModel)]="passengerCount" name="passengerCount" required></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Costo total: {{ totalCost }}</ion-label>
+     </ion-item>
+     <ion-button expand="full" type="submit">Solicitar viaje</ion-button>
+  </form>
+ </ion-content>
+ 
+ <ion-footer>
+  <ion-toolbar>
+     <ion-button expand="full" (click)="salir()">Salir</ion-button>
+  </ion-toolbar>
+ </ion-footer>
 

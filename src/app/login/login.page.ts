@@ -48,9 +48,9 @@ export class LoginPage implements OnInit {
     
           // Navegar a la página correspondiente
           if (tipoUsuario === 'conductor') {
-            this.router.navigate(['/creacion-vi']);
+            this.navCtrl.navigateRoot('creacion-vi');
           } else if (tipoUsuario === 'pasajero') {
-            this.router.navigate(['/inicio']);
+            this.navCtrl.navigateRoot('inicio');
           }
     
           localStorage.setItem('ingresado', 'true');

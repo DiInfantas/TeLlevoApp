@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { retry } from 'rxjs/internal/operators/retry';
+import { Viaje } from '../models/viaje.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class ApiService {
     .pipe(retry(3));
   }
 
+  createViaje(viaje: Viaje): Observable<Viaje>{
+    return this.http.post<Viaje>(`${this.apiURL}/lista_viajes`, viaje);
 
+  }
 }
+
 

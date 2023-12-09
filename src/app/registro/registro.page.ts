@@ -46,6 +46,7 @@ export class RegistroPage implements OnInit {
     localStorage.setItem('Usuario',JSON.stringify(usuario));
 
     localStorage.setItem('ingresado', 'true');
+    this.navCtrl.navigateRoot('inicio');
     
   }
 
