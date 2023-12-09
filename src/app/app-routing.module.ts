@@ -39,11 +39,14 @@ const routes: Routes = [
     redirectTo:'creacion-vi',
     pathMatch:'full'    
   },
+  
+  /*
   {
     path: '**',
     redirectTo: 'p404',
     pathMatch: 'full'
   },
+  */
 
   {
     path: 'home',

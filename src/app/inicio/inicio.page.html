@@ -25,9 +25,11 @@
         <p>Desde: {{ viaje.lugarInicio }}</p>
         <p>Destino: {{ viaje.destino }}</p>
         <p>Precio: ${{ viaje.precio }}</p>
+        <ion-button (click)="mostrarAlerta()">Solicitar</ion-button>
         <a href="">
           Solicitar asiento
         </a>
+        
       </ion-card>
 
   </ion-list>

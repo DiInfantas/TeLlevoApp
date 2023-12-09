@@ -29,8 +29,8 @@ export class InicioPage implements OnInit {
   viajes: any[]=[]; //guardado de datos del service
   mostrarViajes: boolean=false;
 
-  nombre: string = 'Pedrito';
-  alertController: any;
+  
+  
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -38,19 +38,22 @@ export class InicioPage implements OnInit {
     private toastController: ToastController,
     public navCtrl: NavController,
     private apiService: ApiService,
-    alertController: AlertController,
+    public alertController: AlertController,
     
     )  { }
 
     async mostrarAlerta() {
       const alert = await this.alertController.create({
-        header: 'Alerta',
+        header: 'Perfecto!',
         message: 'Notificaremos al conductor',
         buttons: ['OK']
       });
   
       await alert.present();
     }
+
+
+    
     cargarViajes() {
       this.apiService.getViajes().subscribe(data =>{
         //asigna datos a la variable viajes

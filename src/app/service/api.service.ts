@@ -9,7 +9,7 @@ import { Viaje } from '../models/viaje.model';
 })
 
 export class ApiService {
-  apiURL = 'http://127.0.0.1:8000/api'
+  apiURL = 'https://nrztflw3-8000.brs.devtunnels.ms/api'
 
   constructor(public http: HttpClient) { 
 
