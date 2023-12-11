@@ -14,30 +14,22 @@
     </div>
 
     <div style="padding: 10%;">
-      <form [formGroup]="formularioLogin">
+      <form (ngSubmit)="onSubmit()" [formGroup]="formularioLogin">
         <ion-item>
           <ion-label position="floating">Usuario</ion-label>
-          <ion-input formControlName="Usuario"></ion-input>
+          <ion-input formControlName="nombreUsuario" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Tipo de Usuario</ion-label>
-          <ion-checkbox formControlName="tipoUsuario" value="conductor">Conductor</ion-checkbox>
-          <ion-checkbox formControlName="tipoUsuario" value="pasajero">Pasajero</ion-checkbox>
+          <ion-input formControlName="password" type="password" required></ion-input>
         </ion-item>
       </form>
-
+    
       <br>
-      <ion-button (click)="ingresar()" color="dark">Ingresar</ion-button>
+      <ion-button (click)="onSubmit()" color="dark">Ingresar</ion-button>
     </div>
 
     <br>
     <a [routerLink]="['/passrec']">Olvidé mi contraseña</a>
-    <br>
-    <a [routerLink]="['/registro']">¿No tienes cuenta? Regístrate</a>
   </div>
 </ion-content>

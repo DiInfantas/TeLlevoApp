@@ -14,25 +14,13 @@ export class ApiService {
   constructor(public http: HttpClient) { 
 
   }
-  
-  
-  getUsuarios():Observable<any>{
-    return this.http.get(this.apiURL+'/lista_usuarios')
-    .pipe(retry(3));
-  }
-
-  getVehiculos():Observable<any>{
-    return this.http.get(this.apiURL+'/lista_vehiculos')
-    .pipe(retry(3));
-  }
-
   getViajes():Observable<any>{
     return this.http.get(this.apiURL+'/lista_viajes')
     .pipe(retry(3));
   }
 
   createViaje(viaje: Viaje): Observable<Viaje>{
-    return this.http.post<Viaje>(`${this.apiURL}/lista_viajes`, viaje);
+    return this.http.post<Viaje>(`${this.apiURL}/nrztflw3-8000.brs.devtunnels.ms/api`, viaje);
 
   }
 }

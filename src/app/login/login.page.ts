@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {  ActivatedRoute, NavigationExtras } from '@angular/router';
 import {  Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
+import { AuthService } from '../auth-service/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,28 +14,60 @@ import { AlertController, NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
     
   formularioLogin: FormGroup;
-  
+  nombreUsuario: string = '';
+  passUsuario:string = '';
+
 
   constructor(
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
     public fb: FormBuilder,
     public alertController: AlertController,
     public navCtrl: NavController) { 
   this.formularioLogin = this.fb.group({
-    'Usuario': new FormControl("",Validators.required),
+    'nombreUsuario': new FormControl("",Validators.required),
     'password': new FormControl("",Validators.required),
-    'tipoUsuario': new FormControl("", Validators.required)
 
     })
   }
  name: any;
+
+ onSubmit() {
+  // Puedes acceder a los valores del formulario usando this.formularioLogin.value
+  const nombreUsuario = this.formularioLogin.value.nombreUsuario;
+  const passUsuario = this.formularioLogin.value.password;
+
+  this.authService.iniciarSesion(nombreUsuario, passUsuario)
+      .subscribe(
+        (respuesta) => {
+          console.log('Inicio de sesión exitoso', respuesta);
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          console.error('Error en el inicio de sesión', error);
+          this.presAlerta('Error', 'Credenciales inválidas');
+        }
+      );
+  // Realiza acciones según tus necesidades
+  }
+  
+  async presAlerta(titulo: string, mensaje: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
   ngOnInit() {
     }
-
+    /*
     async ingresar() {
       var f = this.formularioLogin.value;
-      console.log('Tipo de Usuario:', f.tipoUsuario);
+      
       var f = this.formularioLogin.value;
       var usuarioString = localStorage.getItem('Usuario');
     
@@ -41,19 +75,8 @@ export class LoginPage implements OnInit {
         var usuario = JSON.parse(usuarioString);
         
         if (usuario.nombre == f.nombre && usuario.password == f.password) {
-          console.log('Ingresado');
-    
-          // Obtener el valor seleccionado del checkbox
-          var tipoUsuario = this.formularioLogin.controls['tipoUsuario'].value;
-    
-          // Navegar a la página correspondiente
-          if (tipoUsuario === 'conductor') {
-            this.navCtrl.navigateRoot('creacion-vi');
-          } else if (tipoUsuario === 'pasajero') {
-            this.navCtrl.navigateRoot('inicio');
-          }
-    
-          localStorage.setItem('ingresado', 'true');
+          console.log('Ingresado');                  
+          //localStorage.setItem('ingresado', 'true');
         } else {
           const alert = await this.alertController.create({
             header: 'Datos incorrectos',
@@ -66,7 +89,7 @@ export class LoginPage implements OnInit {
         // Manejar el caso cuando no hay usuario almacenado
       }
     }
-  
+  */
 }
 
   
