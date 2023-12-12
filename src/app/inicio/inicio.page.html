@@ -1,22 +1,11 @@
-<ion-content [fullscreen]="true">
-  <header style="padding: 5%;">
-    <section>
-      <div class="example-flex-container"></div>
-    </section>    
-  </header>
-  <ion-title>¡Bienvenido Pasajero 😎!</ion-title>
-  <br>
-  <ion-card>
-    Aqui puede Solicitar su viaje 
-    <ion-card-content>
-  
-  
-  <br>
-  
-  <ion-button (click)="cargarViajes()">Buscar Viajes</ion-button>
+<ion-toolbar>
+  <ion-title>¡Bienvenido Pasajero 😎! </ion-title>
+</ion-toolbar>
 
-  <ion-list *ngIf="mostrarViajes">
-    
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-button (click)="cargarViajes()">Buscar Viajes</ion-button>
+    <ion-list *ngIf="mostrarViajes">
       <ion-card *ngFor="let viaje of viajes">
         <ion-card-header>
           Datos del conductor**
@@ -29,15 +18,10 @@
         <a href="">
           Solicitar asiento
         </a>
-        
+
       </ion-card>
-
-  </ion-list>
-  <ion-item>
-    
-    <ion-label>Se quiere ir?</ion-label>
-    <ion-button color="danger" (click)="salir()">Cerrar Sesion</ion-button>
+    </ion-list>
   </ion-item>
-  
-
-  
+  <ion-button color="danger" (click)="salir()">Cerrar Sesion</ion-button>
+  <ion-img class="custom-image" src="assets/image/estacionamiento.png"></ion-img>
+</ion-content>

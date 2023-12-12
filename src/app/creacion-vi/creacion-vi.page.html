@@ -4,37 +4,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form (ngSubmit)="requestTrip()">
-     <ion-item>
-       <ion-label position="floating">Destino</ion-label>
-       <ion-input type="text" [(ngModel)]="destination" name="destination" required></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label position="floating">Ubicación de recogida</ion-label>
-       <ion-input type="text" [(ngModel)]="pickupLocation" name="pickupLocation" required></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label>Tipo de vehículo</ion-label>
-       <ion-select [(ngModel)]="selectedVehicleType" name="selectedVehicleType" required>
-         <ion-select-option value="Carro">Auto</ion-select-option>
-         <ion-select-option value="Camioneta">Camioneta</ion-select-option>
-       </ion-select>
-     </ion-item>
-     <ion-item>
-       <ion-label position="floating">Número de pasajeros</ion-label>
-       <ion-input type="number" [(ngModel)]="passengerCount" name="passengerCount" required></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label>Costo total: {{ totalCost }}</ion-label>
-     </ion-item>
-     <ion-button expand="full" type="submit">Solicitar viaje</ion-button>
-  </form>
- </ion-content>
- 
- <ion-footer>
-  <ion-toolbar>
-     <ion-button expand="full" (click)="salir()">Salir</ion-button>
-  </ion-toolbar>
- </ion-footer>
+<ion-content class="gradient-background">
+  <form [formGroup]="viajeForm" (ngSubmit)="crearViaje()">
+    <ion-item>
+      <ion-label position="floating">Inicio ㊙️</ion-label>
+      <ion-input formControlName="inicio" required></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating">Destino 🚞</ion-label>
+      <ion-input formControlName="destino" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Hora de Salida ⌚</ion-label>
+      <ion-datetime formControlName="horaSalida" presentation="time" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Precio por persona</ion-label>
+      <ion-input formControlName="precio" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Crear Viaje</ion-button>
+
+  </form>
+  <br>
+  <ion-button expand="full" id="present-alert" color="warning">Cancelar Viaje</ion-button>
+  <ion-alert trigger="present-alert" class="custom-alert" header="Estas Seguro?🤔" [buttons]="alertButtons"></ion-alert>
+</ion-content>

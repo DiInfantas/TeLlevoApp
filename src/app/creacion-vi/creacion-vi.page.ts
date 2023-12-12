@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ApiService } from '../service/api.service';
-import { Viaje } from '../models/viaje.model';
+import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-creacion-vi',
@@ -9,54 +10,54 @@ import { Viaje } from '../models/viaje.model';
   styleUrls: ['./creacion-vi.page.scss'],
 })
 export class CreacionViPage implements OnInit {
-  totalCost!: number;
-  destination: string;
-  pickupLocation: string;
-  selectedVehicleType: string;
-  passengerCount: number;
-  costPerPassenger: number;
+
+  viajeForm: FormGroup;
+  public alertButtons = [
+    {
+      text: 'No',
+      cssClass: 'alert-button-cancel',
+    },
+    {
+      text: 'Si',
+      cssClass: 'alert-button-confirm',
+      handler:() => {
+        this.navCtrl.navigateForward('/ingreso-vehi');
+      }
+    },
+  ];
 
   constructor(
+    private alertController: AlertController,
     public navCtrl: NavController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private formBuilder: FormBuilder  // Agrega el formBuilder
   ) {
-    this.destination = '';
-    this.pickupLocation = '';
-    this.selectedVehicleType = '';
-    this.passengerCount = 1;
-    this.costPerPassenger = 1500;
-    this.updateTotalCost();
+    this.viajeForm = this.formBuilder.group({
+      inicio: ['', Validators.required],
+      destino: ['', Validators.required],
+      horaSalida: ['', Validators.required],
+      precio: ['', Validators.required],
+    });
   }
 
   ngOnInit() {}
 
-  updateTotalCost() {
-    this.totalCost = this.passengerCount * this.costPerPassenger;
-  }
+  async crearViaje() {
+    if (this.viajeForm.valid) {
+      const alert = await this.alertController.create({
+        header: 'Éxito',
+        message: 'Su viaje ha sido creado correctamente.',
+        buttons: ['OK']
+        
+      });
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Datos incorrectos O Incompletos',
+        message: 'Corrigue los Datos',
+        buttons: ['Aceptar'],
+      });
+      await alert.present();
+    }
+    }
 
-  requestTrip() {
-    const viaje: Viaje = {
-      destino: this.destination,
-      ubicacionRecogida: this.pickupLocation,
-      tipoVehiculo: this.selectedVehicleType,
-      numeroPasajeros: this.passengerCount,
-      costoTotal: this.totalCost,
-    };
-
-    this.apiService.createViaje(viaje).subscribe(
-      (response: any) => {
-        console.log('Solicitud de viaje enviada. Respuesta de la API:', response);
-        // Maneja la respuesta según sea necesario
-      },
-      (error: any) => {
-        console.error('Error al enviar datos a la API:', error);
-        // Maneja el error según sea necesario
-      }
-    );
-  }
-
-  salir() {
-    localStorage.removeItem('ingresado');
-    this.navCtrl.navigateRoot('login');
-  }
 }

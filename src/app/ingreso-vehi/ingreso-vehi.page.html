@@ -1,15 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>IngresoVehi</ion-title>
+    <ion-item lines="full" detail button>
+      <ion-icon name="home" slot="start"></ion-icon>
+      <ion-label routerLink="/login">home</ion-label>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">IngresoVehi</ion-title>
+      <ion-title size="large">inicio del conducor</ion-title>
     </ion-toolbar>
-    <ion-title>Solicitar Viaje</ion-title>
+    <ion-title>inicio del conducor</ion-title>
   </ion-header>
- 
+
+  <div class="wrapper">
+    <b>Clicke aqui para crear un viaje 🚗</b>
+
+    <div class="ion-activatable ripple-parent custom-parent" routerLink="/creacion-vi">
+      Creacion de viaje
+      <ion-ripple-effect> </ion-ripple-effect>
+    </div>
+  </div>
+
+  <ion-img src="assets/image/carros.png"></ion-img>
+
+
+
+
+
+
+
 </ion-content>
