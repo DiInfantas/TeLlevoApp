@@ -6,19 +6,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://nrztflw3-8000.brs.devtunnels.ms/api/';
+  private apiUrl = 'https://nrztflw3-8000.brs.devtunnels.ms/account/login/';
+  httpClient: any;
 
   constructor(private http: HttpClient) { }
 
-  iniciarSesion(nombreUsuario: string, passUsuario: string): Observable <any> {
-    const url = `${this.apiUrl}iniciar-sesion/`;
-
-    const datosInicioSesion = {
-      nombreUsuario: nombreUsuario,
-      passUsuario: passUsuario
+  iniciarSesion(usuario: string, contraseña: string) {
+    // Datos que se enviarán en el cuerpo de la solicitud POST
+    const datos = {
+      usuario: usuario,
+      contraseña: contraseña
     };
 
-    return this.http.post(url, datosInicioSesion);
+    // Realizar la solicitud POST
+    return this.httpClient.post(this.apiUrl, datos);
   }
-
 }
+

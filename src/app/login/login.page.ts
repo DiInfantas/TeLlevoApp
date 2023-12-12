@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators,ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {  ActivatedRoute, NavigationExtras } from '@angular/router';
 import {  Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
@@ -12,11 +12,8 @@ import { AuthService } from '../auth-service/auth.service';
 })
 
 export class LoginPage implements OnInit {
-    
-  formularioLogin: FormGroup;
-  nombreUsuario: string = '';
-  passUsuario:string = '';
-
+ 
+  
 
   constructor(
     private authService: AuthService,
@@ -25,32 +22,21 @@ export class LoginPage implements OnInit {
     public fb: FormBuilder,
     public alertController: AlertController,
     public navCtrl: NavController) { 
-  this.formularioLogin = this.fb.group({
-    'nombreUsuario': new FormControl("",Validators.required),
-    'password': new FormControl("",Validators.required),
-
-    })
+      
   }
- name: any;
-
- onSubmit() {
-  // Puedes acceder a los valores del formulario usando this.formularioLogin.value
-  const nombreUsuario = this.formularioLogin.value.nombreUsuario;
-  const passUsuario = this.formularioLogin.value.password;
-
-  this.authService.iniciarSesion(nombreUsuario, passUsuario)
-      .subscribe(
-        (respuesta) => {
-          console.log('Inicio de sesión exitoso', respuesta);
-          this.router.navigate(['/home']);
-        },
-        (error) => {
-          console.error('Error en el inicio de sesión', error);
-          this.presAlerta('Error', 'Credenciales inválidas');
-        }
-      );
-  // Realiza acciones según tus necesidades
+  onLoginClick(usuario: string, contraseña: string) {
+    this.authService.iniciarSesion(usuario, contraseña).subscribe(
+      (respuesta: any) => {
+        console.log('Inicio de sesión exitoso:', respuesta);
+        // Manejar la respuesta según sea necesario (por ejemplo, redireccionar a otra página)
+      },
+      (error: any) => {
+        console.error('Error en el inicio de sesión:', error);
+        // Manejar el error según sea necesario
+      }
+    );
   }
+  
   
   async presAlerta(titulo: string, mensaje: string) {
     const alert = await this.alertController.create({

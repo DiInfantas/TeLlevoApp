@@ -14,19 +14,20 @@
     </div>
 
     <div style="padding: 10%;">
-      <form (ngSubmit)="onSubmit()" [formGroup]="formularioLogin">
+      <form>
         <ion-item>
           <ion-label position="floating">Usuario</ion-label>
-          <ion-input formControlName="nombreUsuario" required></ion-input>
+          <ion-input type="text" id="login" formControlName="nombreUsuario" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input formControlName="password" type="password" required></ion-input>
         </ion-item>
+        <ion-button color="dark">Ingresar</ion-button>
       </form>
-    
+
       <br>
-      <ion-button (click)="onSubmit()" color="dark">Ingresar</ion-button>
+      <ion-button color="dark"  >Ingresar</ion-button>
     </div>
 
     <br>

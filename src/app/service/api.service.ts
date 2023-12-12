@@ -10,6 +10,7 @@ import { Viaje } from '../models/viaje.model';
 
 export class ApiService {
   apiURL = 'https://nrztflw3-8000.brs.devtunnels.ms/api'
+  httpClient: any;
 
   constructor(public http: HttpClient) { 
 
@@ -19,10 +20,7 @@ export class ApiService {
     .pipe(retry(3));
   }
 
-  createViaje(viaje: Viaje): Observable<Viaje>{
-    return this.http.post<Viaje>(`${this.apiURL}/nrztflw3-8000.brs.devtunnels.ms/api`, viaje);
-
-  }
 }
+
 
 
